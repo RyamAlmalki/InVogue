@@ -1,5 +1,6 @@
 package screens.customerscreencomponent;
 
+import api.DatabaseConnection;
 import models.Product;
 
 import javax.swing.*;
@@ -13,12 +14,13 @@ public class ProductCard extends JPanel {
         ImageCard image = new ImageCard(product);
         image.setPreferredSize(new Dimension(120,250));
 
-        JButton button = new JButton();
-        button.setBackground(Color.gray);
-        button.setPreferredSize(new Dimension(100,80));
+        CardInformation cardInformation = new CardInformation(product);
+
+
+
 
         add(image, BorderLayout.NORTH);
-        add(button, BorderLayout.SOUTH);
+        add(cardInformation, BorderLayout.SOUTH);
 
         this.setBackground(Color.white);
     }

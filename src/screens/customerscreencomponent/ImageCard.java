@@ -10,8 +10,12 @@ public class ImageCard extends JPanel {
 
     ImageCard(Product product){
 
+        ImageIcon icon;
         Image image = new ImageIcon(product.imagepath).getImage();
-        ImageIcon icon = new ImageIcon(image);
+        icon = new ImageIcon(image);
+
+
+
 
         JLabel imagelabel = new JLabel();
         imagelabel.setIcon(icon);
