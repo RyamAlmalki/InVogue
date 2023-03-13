@@ -4,7 +4,7 @@
 
 
 <h1 align="left">InVogue</h1>
-<p>InVogue is a Java Based ecommerce platform with essential commerce features.</p>
+<p>InVogue is a Java based ecommerce platform with essential commerce features.</p>
 
 <h1 align="left">Features</h1>
 <ul>
