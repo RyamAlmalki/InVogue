@@ -1,1 +1,1 @@
-<h3 style="text-align: center;">InVogue</h3>
+<h1 align="center">InVogue</h1>
