@@ -25,8 +25,5 @@
     <img width="1000" src="https://github.com/RyamAlmalki/InVogue/blob/master/product_page.png">
 </p>
 
-<p align="center">
-    <img width="1000" src="https://github.com/RyamAlmalki/InVogue/blob/master/cart_page.png" alt="Material Bread logo">
-</p>
 <h1 align="left">Quick Start</h1>
 
