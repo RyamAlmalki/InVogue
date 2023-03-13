@@ -18,7 +18,7 @@
 <h1 align="left">Demo</h1>
 
 <p align="center">
-    <img width="800" src="https://github.com/RyamAlmalki/InVogue/blob/master/demo.png" alt="Material Bread logo">
+    <img width="800" src="https://github.com/RyamAlmalki/InVogue/blob/master/main_page.png" alt="Material Bread logo">
 </p>
 
 <p align="center">
