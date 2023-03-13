@@ -1,7 +1,7 @@
 <p align="center">
     <img width="1200" src="https://github.com/RyamAlmalki/InVogue/blob/master/banner.png" alt="Material Bread logo">
 </p>
-<h1 align="center"; style="font-size: 4rem; color: #2ecc71"><strong>InVogue</strong></h1>
+<h1 align="center" style="font-size: 4rem; color: #2ecc71"><strong>InVogue</strong></h1>
 
 <h1 align="left">Introduction</h1>
 <p>InVogue is a Java Based ecommerce platform with essential commerce features.</p>
