@@ -1,10 +1,10 @@
 <p align="center">
     <img width="1200" src="https://github.com/RyamAlmalki/InVogue/blob/master/banner.png" alt="Material Bread logo">
 </p>
-<h1 align="center"><strong>InVogue</strong></h1>
 
-<h1 align="left">Introduction</h1>
-<p>InVogue is a Java Based ecommerce platform with essential commerce features.</p>
+
+<h1 align="left">InVogue</h1>
+<p>InVogue is a Java based ecommerce platform with essential commerce features.</p>
 
 <h1 align="left">Features</h1>
 <ul>
@@ -25,5 +25,5 @@
     <img width="1000" src="https://github.com/RyamAlmalki/InVogue/blob/master/product_page.png">
 </p>
 
-<h1 align="left">Quick Start</h1>
+
 
