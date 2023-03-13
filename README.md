@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="200" src="https://github.com/RyamAlmalki/InVogue/blob/master/logo.jpg?raw=true" alt="Material Bread logo">
+    <img width="400" src="https://github.com/RyamAlmalki/InVogue/blob/master/logo.jpg?raw=true" alt="Material Bread logo">
 </p>
 <h1 align="center">InVogue</h1>
 
@@ -18,15 +18,15 @@
 <h1 align="left">Demo</h1>
 
 <p align="center">
-    <img width="1000" src="https://github.com/RyamAlmalki/InVogue/blob/master/demo.png" alt="Material Bread logo">
+    <img width="800" src="https://github.com/RyamAlmalki/InVogue/blob/master/demo.png" alt="Material Bread logo">
 </p>
 
 <p align="center">
-    <img width="1000" src="https://github.com/RyamAlmalki/InVogue/blob/master/demo.png" alt="Material Bread logo">
+    <img width="800" src="https://github.com/RyamAlmalki/InVogue/blob/master/demo.png" alt="Material Bread logo">
 </p>
 
 <p align="center">
-    <img width="1000" src="https://github.com/RyamAlmalki/InVogue/blob/master/demo.png" alt="Material Bread logo">
+    <img width="800" src="https://github.com/RyamAlmalki/InVogue/blob/master/demo.png" alt="Material Bread logo">
 </p>
 <h1 align="left">Quick Start</h1>
 
