@@ -4,8 +4,9 @@
 <h1 align="center">InVogue</h1>
 <br>
 <h1 align="left">Introduction</h1>
-<p>EverShop is a GraphQL Based and React ecommerce platform with essential commerce features. Built with React, modular and fully customizable.</p>
+<p>InVogue is a Java Based ecommerce platform with essential commerce features.</p>
 <br>
 <h1 align="left">Features</h1>
 <br>
 <h1 align="left">Demo</h1>
+<h1 align="left">Quick Start</h1>
