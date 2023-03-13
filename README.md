@@ -25,5 +25,5 @@
     <img width="1000" src="https://github.com/RyamAlmalki/InVogue/blob/master/product_page.png">
 </p>
 
-<h1 align="left">Quick Start</h1>
+
 
