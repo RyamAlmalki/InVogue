@@ -4,7 +4,6 @@ import api.DatabaseConnection;
 import screens.CustomerScreen;
 import screens.MainFrame;
 import screens.MainScreen;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -27,8 +26,6 @@ public class NavBar extends JPanel {
         this.customerScreen = customerScreen;
 
 
-
-
         JPanel option = new JPanel();
         option.setOpaque(false);
         option.setLayout(new FlowLayout(FlowLayout.RIGHT, 60, 30));
@@ -39,8 +36,6 @@ public class NavBar extends JPanel {
         shoppingCart.setIcon(shoppingCarticon);
         shoppingCart.setVisible(true);
         shoppingCart.addMouseListener(new buttonMouseAdapter(customerScreen));
-
-
 
 
         //Exit
@@ -63,14 +58,9 @@ public class NavBar extends JPanel {
 
 
         JTextField searchbar = new JTextField(60);
-
-
         searchbar.setEditable(true);
         searchbar.addActionListener(ae -> {
             textFieldValue = searchbar.getText();
-
-
-
 
                     row = DatabaseConnection.getNumberforfilter(textFieldValue);
                     System.out.println(row);
@@ -85,7 +75,6 @@ public class NavBar extends JPanel {
                         System.out.println("found");
                         cardholder.removeAll();
                         cardholder.setPreferredSize(new Dimension(500,32000));
-
 
 
 
@@ -387,11 +376,7 @@ public class NavBar extends JPanel {
 
         });
 
-//        JPanel iconSection = new JPanel();
-//        iconSection.setOpaque(false);
-//        iconSection.add(shoppingCart);
-//        shoppingCart.setBounds(330,30,100,30);
-        //iconSection.setLayout(null);
+
         JPanel textSection = new JPanel();
         textSection.setOpaque(false);
         searchbar.setBounds(30,30,700,30);
@@ -402,13 +387,12 @@ public class NavBar extends JPanel {
         logo.setBounds(70,20,300,60);
         logoSection.setLayout(null);
         logoSection.add(logo);
-        //logo.setBounds(100,0,300,100);
+
 
         add(logoSection);
         add(textSection);
         add(option);
         setLayout(new GridLayout(1, 3, 10,10));
-        //setLayout(new FlowLayout(FlowLayout.LEFT, 100, 3));
     }
 
 
@@ -457,8 +441,6 @@ public class NavBar extends JPanel {
             cardholder.revalidate();
             cardholder.repaint();
             customerScreen.bottomBorder.setVisible(true);
-
-
 
         }
 

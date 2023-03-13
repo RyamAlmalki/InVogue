@@ -15,8 +15,6 @@ public class ImageCard extends JPanel {
         icon = new ImageIcon(image);
 
 
-
-
         JLabel imagelabel = new JLabel();
         imagelabel.setIcon(icon);
         imagelabel.setPreferredSize(new Dimension(400, 250));

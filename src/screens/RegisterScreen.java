@@ -1,13 +1,11 @@
 package screens;
 
 import feature.Register;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
-import java.util.logging.Logger;
 
 public class RegisterScreen extends JPanel {
 
@@ -91,16 +89,10 @@ public class RegisterScreen extends JPanel {
         panel.add(login);
         login.addMouseListener(new lanelButtonMouseAdapter(this));
         this.setLayout(null);
-
-
-
-
     }
 
+
     private class lanelButtonMouseAdapter extends MouseAdapter{
-
-
-
         RegisterScreen registerScreen;
         Register register;
         public lanelButtonMouseAdapter(RegisterScreen registerScreen){

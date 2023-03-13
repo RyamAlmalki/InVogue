@@ -4,7 +4,6 @@ import api.DatabaseConnection;
 import screens.customerscreencomponent.EmptyCard;
 import screens.customerscreencomponent.NavBar;
 import screens.customerscreencomponent.ProductCard;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -29,12 +28,7 @@ public class CustomerScreen extends JPanel {
         this.setLayout(new BorderLayout());
 
 
-
-
         cardholder = new JPanel();
-
-
-
         cardholder.setPreferredSize(new Dimension(500,32000));
         cardholder.setLayout(new GridLayout(row,4,5,5));
 
@@ -63,6 +57,7 @@ public class CustomerScreen extends JPanel {
         }
 
 
+        // for format
         cardholder.add(new EmptyCard());
         cardholder.add(new EmptyCard());
         cardholder.add(new EmptyCard());
