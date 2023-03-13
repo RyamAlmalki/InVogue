@@ -7,6 +7,12 @@
 <p>InVogue is a Java Based ecommerce platform with essential commerce features.</p>
 
 <h1 align="left">Features</h1>
+-Shopping cart.
+-Product Filtering
+-Shopping cart.
+-User-Friendly Navigation.
+-Payment
 
 <h1 align="left">Demo</h1>
 <h1 align="left">Quick Start</h1>
+
