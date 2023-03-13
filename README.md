@@ -8,9 +8,9 @@
 
 <h1 align="left">Features</h1>
 <ul>
-  <li>Shopping cart.</li>
+  <li>Shopping cart</li>
   <li>Product Filtering</li>
-  <li>User-Friendly Navigation.</li>
+  <li>User-Friendly Navigation</li>
   <li>Payment</li>
 </ul>
 
