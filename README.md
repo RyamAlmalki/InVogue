@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="400" src="https://github.com/RyamAlmalki/InVogue/blob/master/banner.png" alt="Material Bread logo">
+    <img width="1000" src="https://github.com/RyamAlmalki/InVogue/blob/master/banner.png" alt="Material Bread logo">
 </p>
 <h1 align="center">InVogue</h1>
 
