@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-    <img width="800" src="https://github.com/RyamAlmalki/InVogue/blob/master/demo2.png">
+    <img width="800" src="[https://github.com/RyamAlmalki/InVogue/blob/master/demo2.png](https://github.com/RyamAlmalki/InVogue/blob/master/product_page.png)">
 </p>
 
 <p align="center">
