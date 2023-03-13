@@ -9,8 +9,7 @@ public class CartCard extends JPanel {
 
     CartCard(Product product){
         setLayout(new BorderLayout());
-        //
-        // ImageCard image = new ImageCard(product, true);
+
 
         Image image = new ImageIcon(product.imagepath).getImage().getScaledInstance(100,100, Image.SCALE_DEFAULT);
         ImageIcon icon = new ImageIcon(image);

@@ -13,7 +13,6 @@ public class ProductCard extends JPanel {
         setLayout(new BorderLayout());
         ImageCard image = new ImageCard(product);
         image.setPreferredSize(new Dimension(120,250));
-
         CardInformation cardInformation = new CardInformation(product);
 
 

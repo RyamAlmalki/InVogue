@@ -1,6 +1,4 @@
-import screens.CustomerScreen;
 import screens.MainFrame;
-import screens.MainScreen;
 
 /*
     Start of the program... Main Screen will be called

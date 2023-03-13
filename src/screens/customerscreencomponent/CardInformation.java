@@ -17,12 +17,20 @@ public class CardInformation extends JPanel {
         this.setPreferredSize(new Dimension(100,80));
 
         JLabel productName = new JLabel(product.name);
+        productName.setFont(new Font("Arial", Font.PLAIN, 15));
+
         productName.setBounds(2,2 ,100,20);
         JLabel productPrice = new JLabel(product.price + "SAR");
+        productPrice.setFont(new Font("Arial", Font.PLAIN, 10));
         productPrice.setBounds(2, 20,100,20);
         JButton buy = new JButton("buy");
         //buy.setSize(70,20);
         buy.setBounds(170, 2,70,20);
+
+        buy.setBackground(new Color(255,1,215));
+        buy.setForeground(Color.WHITE);
+        buy.setBorder(BorderFactory.createLineBorder(new Color(255,1,215)));
+        buy.setFocusable(false);
 
 
 

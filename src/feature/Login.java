@@ -2,7 +2,6 @@ package feature;
 
 import api.DatabaseConnection;
 import screens.LoginScreen;
-
 import javax.swing.*;
 import java.sql.SQLException;
 

@@ -22,6 +22,7 @@ public class DatabaseConnection {
     static private Connection connection;
     static private PreparedStatement getAllProduct;
     static private PreparedStatement getFilteredData;
+    static private PreparedStatement insertNewPerson;
     static public ResultSet resultSet = null;
     public static Customer customer;
 
@@ -68,6 +69,99 @@ public class DatabaseConnection {
 
 
     }
+
+
+    public static void addCustomer(String fname, String lname, String Email, String Pass) throws SQLException{
+
+
+
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce", "root", "Lana@2020");
+            insertNewPerson = connection.prepareStatement( "INSERT INTO customer" + "(FName, Lname, Email, Pass)" + "VALUES ( ?, ?, ?, ?);" );
+
+
+        }catch(SQLException sqlException){
+            sqlException.printStackTrace();
+            System.exit(1);}
+
+
+
+
+        try{
+
+
+            insertNewPerson.setString(1,fname);
+            insertNewPerson.setString(2,lname);
+            insertNewPerson.setString(3,Email);
+            insertNewPerson.setString(4,Pass);
+
+            insertNewPerson.execute();
+            getCurrentCustomer(Email, Pass);
+
+        }catch(SQLException sqlException)
+        {
+            sqlException.printStackTrace();}
+        finally{
+            try
+            {
+                resultSet.close();
+            }
+            catch (SQLException sqlException){
+                sqlException.printStackTrace();
+
+            }
+        }
+
+
+    }
+
+
+    public static boolean getCurrentCustomer(String email, String password) throws SQLException{
+
+
+        try{
+
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce", "root", "Lana@2020");
+            getCustomer = connection.prepareStatement( "SELECT * FROM customer WHERE Pass = ? AND Email = ?;" ); // prepa
+
+
+
+        }catch(SQLException sqlException){
+            sqlException.printStackTrace();
+            System.exit(1);}
+
+
+        try{
+
+            getCustomer.setString(1,password);
+            getCustomer.setString(2,email);
+            resultSet = getCustomer.executeQuery();
+
+            while(resultSet.next()){
+                DatabaseConnection.customer = new Customer(resultSet.getInt("CustID"), resultSet.getString("Email"),  resultSet.getString("FName"), resultSet.getString("Lname"), resultSet.getString("Pass"));
+                return true;
+            }
+
+
+        }catch(SQLException sqlException)
+        {
+            sqlException.printStackTrace();}
+        finally{
+            try
+            {
+                resultSet.close();
+            }
+            catch (SQLException sqlException){
+                sqlException.printStackTrace();
+
+            }
+        }
+
+
+        return false;
+    }
+
+
 
 
     public static void getFilteredData(String search) throws SQLException {
@@ -139,7 +233,7 @@ public class DatabaseConnection {
             resultSet = getCustomer.executeQuery();
 
             while(resultSet.next()){
-                DatabaseConnection.customer = new Customer(resultSet.getInt("CustID"), resultSet.getString("Email"), resultSet.getString("Pass"), resultSet.getString("FName"), resultSet.getString("Lname"), resultSet.getString("Country"), resultSet.getString("Phone"));
+                DatabaseConnection.customer = new Customer(resultSet.getInt("CustID"), resultSet.getString("Email"),  resultSet.getString("FName"), resultSet.getString("Lname"), resultSet.getString("Pass"));
                 return "Customer";
             }
 

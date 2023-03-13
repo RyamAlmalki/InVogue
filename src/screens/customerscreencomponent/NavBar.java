@@ -2,10 +2,13 @@ package screens.customerscreencomponent;
 
 import api.DatabaseConnection;
 import screens.CustomerScreen;
+import screens.MainFrame;
+import screens.MainScreen;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Collections;
 
 public class NavBar extends JPanel {
 
@@ -15,9 +18,9 @@ public class NavBar extends JPanel {
     public JScrollPane scroll;
     public CustomerScreen customerScreen;
 
-    public NavBar(JPanel cardholder, JScrollPane scroll, CustomerScreen customerScreen){
+    public NavBar(JPanel cardholder, JScrollPane scroll, CustomerScreen customerScreen, MainScreen mainScreen, MainFrame mainFrame){
         JLabel logo = new JLabel();
-        ImageIcon icon = new ImageIcon("C:\\Development\\OOP2\\InVogue\\resources\\dashboardlogo.png");
+        ImageIcon icon = new ImageIcon("resources\\InVogueStore.png");
         logo.setIcon(icon);
         this.cardholder = cardholder;
         this.scroll = scroll;
@@ -26,18 +29,42 @@ public class NavBar extends JPanel {
 
 
 
+        JPanel option = new JPanel();
+        option.setOpaque(false);
+        option.setLayout(new FlowLayout(FlowLayout.RIGHT, 60, 30));
 
-
+        // shoppingCart
         JLabel shoppingCart = new JLabel();
-        ImageIcon shoppingCarticon = new ImageIcon("C:\\Development\\OOP2\\InVogue\\resources\\cart.png");
+        ImageIcon shoppingCarticon = new ImageIcon("resources\\cart.png");
         shoppingCart.setIcon(shoppingCarticon);
         shoppingCart.setVisible(true);
         shoppingCart.addMouseListener(new buttonMouseAdapter(customerScreen));
 
 
+
+
+        //Exit
+        JLabel logout = new JLabel();
+        ImageIcon logoutIcon = new ImageIcon("resources\\logout.png");
+        logout.setIcon(logoutIcon);
+        logout.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                customerScreen.setVisible(false);
+                mainFrame.add(new MainScreen(mainFrame));
+
+            }
+        });
+
+
+        option.add(shoppingCart);
+        option.add(logout);
+
+
+
         JTextField searchbar = new JTextField(60);
 
-        //searchbar.setBounds(530,35,400,30);
+
         searchbar.setEditable(true);
         searchbar.addActionListener(ae -> {
             textFieldValue = searchbar.getText();
@@ -45,9 +72,10 @@ public class NavBar extends JPanel {
 
 
 
+                    row = DatabaseConnection.getNumberforfilter(textFieldValue);
+                    System.out.println(row);
+                    if(DatabaseConnection.numberOfProductFiltered >= 1 && !textFieldValue.equals("dress")){
 
-                    if(textFieldValue.equals("short dress")){
-                        row = DatabaseConnection.getNumberforfilter(textFieldValue);
                         cardholder.setLayout(new GridLayout(row,4,5,5));
                         customerScreen.bottomBorder.setVisible(false);
                         customerScreen.rightBorder.setPreferredSize(new Dimension(80,60));
@@ -56,7 +84,7 @@ public class NavBar extends JPanel {
 
                         System.out.println("found");
                         cardholder.removeAll();
-                        cardholder.setPreferredSize(new Dimension(500,1950));
+                        cardholder.setPreferredSize(new Dimension(500,32000));
 
 
 
@@ -84,22 +112,36 @@ public class NavBar extends JPanel {
                         }
 
 
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.productsFilter.get(0)));
 
-
-
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
 
 
 
@@ -111,15 +153,20 @@ public class NavBar extends JPanel {
 
                     if(textFieldValue.equals("")){
 
-                        customerScreen.bottomBorder.setVisible(false);
-                        customerScreen.rightBorder.setPreferredSize(new Dimension(80,60));
-                        customerScreen.leftBorder.setPreferredSize(new Dimension(80,60));
+
                         row = DatabaseConnection.getNumber();
                         int currentproductnumber = 0;
                         cardholder.removeAll();
-
+                        customerScreen.add(this, BorderLayout.NORTH);
+                        customerScreen.add(customerScreen.leftBorder, BorderLayout.WEST);
+                        customerScreen.add(customerScreen.rightBorder, BorderLayout.EAST);
+                        customerScreen.bottomBorder.setVisible(false);
+                        customerScreen.add(scroll, BorderLayout.CENTER);
                         cardholder.setLayout(new GridLayout(row,4,5,5));
-                        cardholder.setPreferredSize(new Dimension(500,14000));
+                        cardholder.setPreferredSize(new Dimension(500,38800));
+
+                        Collections.shuffle(DatabaseConnection.products);
+
                         for(int col = 0; col < 5; col++){
                             for(int rows = 0; rows < row; rows++){
 
@@ -143,81 +190,191 @@ public class NavBar extends JPanel {
 
 
 
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
-                        cardholder.add(new ProductCard(DatabaseConnection.products.get(0)));
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+                        cardholder.add(new EmptyCard());
+
+
+
 
                         cardholder.revalidate();
                         cardholder.repaint();
@@ -230,11 +387,11 @@ public class NavBar extends JPanel {
 
         });
 
-        JPanel iconSection = new JPanel();
-        iconSection.setOpaque(false);
-        iconSection.add(shoppingCart);
-        shoppingCart.setBounds(330,30,100,30);
-        iconSection.setLayout(null);
+//        JPanel iconSection = new JPanel();
+//        iconSection.setOpaque(false);
+//        iconSection.add(shoppingCart);
+//        shoppingCart.setBounds(330,30,100,30);
+        //iconSection.setLayout(null);
         JPanel textSection = new JPanel();
         textSection.setOpaque(false);
         searchbar.setBounds(30,30,700,30);
@@ -249,7 +406,7 @@ public class NavBar extends JPanel {
 
         add(logoSection);
         add(textSection);
-        add(iconSection);
+        add(option);
         setLayout(new GridLayout(1, 3, 10,10));
         //setLayout(new FlowLayout(FlowLayout.LEFT, 100, 3));
     }
@@ -285,26 +442,20 @@ public class NavBar extends JPanel {
         public void mousePressed(MouseEvent e)
         {
 
-
             cardholder.removeAll();
 
             cardholder.setLayout(new GridLayout(20,1,5,5));
             cardholder.setPreferredSize(new Dimension(1000,3000));
 
 
-
-
             for(int i = 0 ; i < DatabaseConnection.customer.cartProducts.size(); i++){
                 customerScreen.cardholder.add(new CartCard(DatabaseConnection.customer.cartProducts.get(i)));
             }
 
+            DatabaseConnection.customer.calPayment(customerScreen);
+
             cardholder.revalidate();
             cardholder.repaint();
-
-
-
-
-
             customerScreen.bottomBorder.setVisible(true);
 
 
@@ -321,10 +472,7 @@ public class NavBar extends JPanel {
         }
 
 
-
-
     }
-
 
 
 

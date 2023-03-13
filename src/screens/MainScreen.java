@@ -21,19 +21,21 @@ public class MainScreen extends JPanel {
 
         // create the logo label and give it an Icon
         JLabel mainLogo = new JLabel();
-        ImageIcon iconLogo = new ImageIcon("resources\\dashboardlogo.png");
+        ImageIcon iconLogo = new ImageIcon("resources\\InVogueMain.png");
         mainLogo.setIcon(iconLogo);
+
 
         // place the logo label into a panel and set to FlowLayout to place logo in the center
         JPanel logoPanel = new JPanel();
-        logoPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        logoPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0,25));
         logoPanel.add(mainLogo);
         logoPanel.setBounds(0,0,500,100);
         logoPanel.setBackground(Color.white);
 
+
         loginScreen = new LoginScreen(mainFrame, this);
         loginScreen.setVisible(false);
-        registerScreen = new RegisterScreen(this);
+        registerScreen = new RegisterScreen(this, mainFrame);
         registerScreen.setVisible(false);
 
 
@@ -48,6 +50,11 @@ public class MainScreen extends JPanel {
         login.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                registerScreen.email.setText(" Email");
+                registerScreen.password.setText(" Password");
+                registerScreen.fName.setText(" First Name");
+                registerScreen.lName.setText(" Last Name");
+
                 choiceClicked(loginScreen);
                 login.setForeground(Color.white);
                 login.setBackground(new Color(255,1,215));
@@ -56,6 +63,7 @@ public class MainScreen extends JPanel {
 
             }
         });
+
 
         register = new JButton("Register");
         register.setFont(new Font("Arial", Font.PLAIN, 30));
@@ -66,6 +74,9 @@ public class MainScreen extends JPanel {
         register.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                loginScreen.email.setText(" Email");
+                loginScreen.password.setText(" Password");
+
                 choiceClicked(registerScreen);
                 register.setForeground(Color.white);
                 register.setBackground(new Color(255,1,215));
@@ -100,7 +111,7 @@ public class MainScreen extends JPanel {
 
 
 
-
+        choiceClicked(loginScreen);
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 60));
         setVisible(true);
     }

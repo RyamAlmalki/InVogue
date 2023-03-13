@@ -1,12 +1,9 @@
 package screens;
 
-import api.DatabaseConnection;
 import feature.Login;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
@@ -35,17 +32,33 @@ public class LoginScreen extends JPanel {
 
         email = new JTextField(50);
         email.setText(" Email");
+        email.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                email.setText("");
+            }
+        });
         email.setBounds(25,10,450,50);
+
+
         password = new JTextField(50);
         password.setText(" Password");
         password.setBounds(25,110,450,50);
+        password.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                password.setText("");
+            }
+        });
+
+
         panel.add(email);
         panel.add(password);
         this.add(panel);
 
 
 
-        JButton login = new JButton("Start selling");
+        JButton login = new JButton("Start Shopping");
         login.addMouseListener( new lanelButtonMouseAdapter(this));
         login.setBackground(new Color(255,1,215));
         login.setForeground(Color.WHITE);
@@ -100,14 +113,9 @@ public class LoginScreen extends JPanel {
             if(result.equals("Customer")){
 
                 mainScreen.setVisible(false);
-                mainFrame.add(new CustomerScreen());
+                mainFrame.add(new CustomerScreen(mainScreen, mainFrame));
 
-
-            }else{
-                System.out.println("Go register");
             }
-
-
 
         }
 
